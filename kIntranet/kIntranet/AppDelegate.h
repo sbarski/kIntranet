@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Staff.h"
+#import "StaffViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

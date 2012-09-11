@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+{
+    NSMutableArray *employees;
+}
 
 - (void)dealloc
 {
@@ -19,7 +22,42 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    employees = [NSMutableArray arrayWithCapacity:100];
+    
+    Staff *staff = [[Staff alloc] init];
+    staff.name = @"Peter Sbarski";
+    staff.location = @"Melbourne Office";
+    staff.checkin = nil;
+    staff.checkout = nil;
+    
+    [employees addObject:staff];
+    
+    staff = [[Staff alloc] init];
+    staff.name = @"Sam Kroonenburg";
+    staff.location = @"TechEd";
+    staff.checkout = [self getCurrentDate:0];
+    staff.checkin = [self getCurrentDate:10];
+    
+    [employees addObject:staff];
+    
+    UITabBarController *tabBarController = (UITabBarController *) self.window.rootViewController;
+    UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
+    StaffViewController *staffViewController = [[navigationController viewControllers] objectAtIndex:0];
+    staffViewController.employees = employees;
+    
     return YES;
+}
+
+- (NSDate*) getCurrentDate:(NSInteger)hours
+{
+    NSDate *currentDate = [NSDate date];
+    NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setHour:hours];
+    NSDate *date = [gregorian dateByAddingComponents:comps toDate:currentDate options:0];
+    [comps release];
+    
+    return date;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
