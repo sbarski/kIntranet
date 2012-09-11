@@ -1,0 +1,284 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CBA969FE15FF1B330070F983 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA969FD15FF1B330070F983 /* UIKit.framework */; };
+		CBA96A0015FF1B330070F983 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA969FF15FF1B330070F983 /* Foundation.framework */; };
+		CBA96A0215FF1B330070F983 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA96A0115FF1B330070F983 /* CoreGraphics.framework */; };
+		CBA96A0815FF1B330070F983 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBA96A0615FF1B330070F983 /* InfoPlist.strings */; };
+		CBA96A0A15FF1B330070F983 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA96A0915FF1B330070F983 /* main.m */; };
+		CBA96A0E15FF1B330070F983 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA96A0D15FF1B330070F983 /* AppDelegate.m */; };
+		CBA96A1115FF1B330070F983 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA96A0F15FF1B330070F983 /* MainStoryboard.storyboard */; };
+		CBA96A1415FF1B330070F983 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA96A1315FF1B330070F983 /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CBA969F915FF1B330070F983 /* kIntranet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kIntranet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBA969FD15FF1B330070F983 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CBA969FF15FF1B330070F983 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CBA96A0115FF1B330070F983 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CBA96A0515FF1B330070F983 /* kIntranet-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kIntranet-Info.plist"; sourceTree = "<group>"; };
+		CBA96A0715FF1B330070F983 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CBA96A0915FF1B330070F983 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CBA96A0B15FF1B330070F983 /* kIntranet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kIntranet-Prefix.pch"; sourceTree = "<group>"; };
+		CBA96A0C15FF1B330070F983 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CBA96A0D15FF1B330070F983 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CBA96A1015FF1B330070F983 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		CBA96A1215FF1B330070F983 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CBA96A1315FF1B330070F983 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CBA969F615FF1B330070F983 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBA969FE15FF1B330070F983 /* UIKit.framework in Frameworks */,
+				CBA96A0015FF1B330070F983 /* Foundation.framework in Frameworks */,
+				CBA96A0215FF1B330070F983 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CBA969EE15FF1B330070F983 = {
+			isa = PBXGroup;
+			children = (
+				CBA96A0315FF1B330070F983 /* kIntranet */,
+				CBA969FC15FF1B330070F983 /* Frameworks */,
+				CBA969FA15FF1B330070F983 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CBA969FA15FF1B330070F983 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CBA969F915FF1B330070F983 /* kIntranet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CBA969FC15FF1B330070F983 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBA969FD15FF1B330070F983 /* UIKit.framework */,
+				CBA969FF15FF1B330070F983 /* Foundation.framework */,
+				CBA96A0115FF1B330070F983 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CBA96A0315FF1B330070F983 /* kIntranet */ = {
+			isa = PBXGroup;
+			children = (
+				CBA96A0C15FF1B330070F983 /* AppDelegate.h */,
+				CBA96A0D15FF1B330070F983 /* AppDelegate.m */,
+				CBA96A0F15FF1B330070F983 /* MainStoryboard.storyboard */,
+				CBA96A1215FF1B330070F983 /* ViewController.h */,
+				CBA96A1315FF1B330070F983 /* ViewController.m */,
+				CBA96A0415FF1B330070F983 /* Supporting Files */,
+			);
+			path = kIntranet;
+			sourceTree = "<group>";
+		};
+		CBA96A0415FF1B330070F983 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CBA96A0515FF1B330070F983 /* kIntranet-Info.plist */,
+				CBA96A0615FF1B330070F983 /* InfoPlist.strings */,
+				CBA96A0915FF1B330070F983 /* main.m */,
+				CBA96A0B15FF1B330070F983 /* kIntranet-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CBA969F815FF1B330070F983 /* kIntranet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBA96A1715FF1B330070F983 /* Build configuration list for PBXNativeTarget "kIntranet" */;
+			buildPhases = (
+				CBA969F515FF1B330070F983 /* Sources */,
+				CBA969F615FF1B330070F983 /* Frameworks */,
+				CBA969F715FF1B330070F983 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = kIntranet;
+			productName = kIntranet;
+			productReference = CBA969F915FF1B330070F983 /* kIntranet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CBA969F015FF1B330070F983 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Peter Sbarski";
+			};
+			buildConfigurationList = CBA969F315FF1B330070F983 /* Build configuration list for PBXProject "kIntranet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CBA969EE15FF1B330070F983;
+			productRefGroup = CBA969FA15FF1B330070F983 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CBA969F815FF1B330070F983 /* kIntranet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CBA969F715FF1B330070F983 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBA96A0815FF1B330070F983 /* InfoPlist.strings in Resources */,
+				CBA96A1115FF1B330070F983 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CBA969F515FF1B330070F983 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBA96A0A15FF1B330070F983 /* main.m in Sources */,
+				CBA96A0E15FF1B330070F983 /* AppDelegate.m in Sources */,
+				CBA96A1415FF1B330070F983 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CBA96A0615FF1B330070F983 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBA96A0715FF1B330070F983 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CBA96A0F15FF1B330070F983 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBA96A1015FF1B330070F983 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CBA96A1515FF1B330070F983 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CBA96A1615FF1B330070F983 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CBA96A1815FF1B330070F983 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kIntranet/kIntranet-Prefix.pch";
+				INFOPLIST_FILE = "kIntranet/kIntranet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CBA96A1915FF1B330070F983 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kIntranet/kIntranet-Prefix.pch";
+				INFOPLIST_FILE = "kIntranet/kIntranet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CBA969F315FF1B330070F983 /* Build configuration list for PBXProject "kIntranet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBA96A1515FF1B330070F983 /* Debug */,
+				CBA96A1615FF1B330070F983 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBA96A1715FF1B330070F983 /* Build configuration list for PBXNativeTarget "kIntranet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBA96A1815FF1B330070F983 /* Debug */,
+				CBA96A1915FF1B330070F983 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CBA969F015FF1B330070F983 /* Project object */;
+}
