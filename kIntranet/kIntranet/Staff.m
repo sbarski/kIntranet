@@ -14,5 +14,6 @@
 @synthesize location;
 @synthesize checkin;
 @synthesize checkout;
+@synthesize selected;
 
 @end

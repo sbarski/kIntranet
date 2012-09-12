@@ -116,17 +116,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    if ([tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark)
+    if ([tableView cellForRowAtIndexPath:indexPath].imageView.hidden == TRUE)
     {
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-        selectedCells = [self.tableView indexPathsForSelectedRows];
+        [tableView cellForRowAtIndexPath:indexPath].imageView.hidden = FALSE;
     }
     else
     {
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-        selectedCells = [self.tableView indexPathsForSelectedRows];
+        [tableView cellForRowAtIndexPath:indexPath].imageView.hidden = TRUE;
     }
+
+    Staff *staff = [self.employees objectAtIndex:indexPath.row];
+    staff.selected = [tableView cellForRowAtIndexPath:indexPath].imageView.hidden == TRUE;
     
+    selectedCells = [self.tableView indexPathsForSelectedRows];
+
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

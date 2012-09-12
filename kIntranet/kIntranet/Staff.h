@@ -14,5 +14,6 @@
 @property (nonatomic, copy) NSString *location;
 @property (nonatomic, copy) NSDate *checkout;
 @property (nonatomic, copy) NSDate *checkin;
+@property (nonatomic, assign) BOOL selected;
 
 @end

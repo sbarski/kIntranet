@@ -15,11 +15,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StaffCell" textLabel="Es5-Rp-iuJ" detailTextLabel="q2b-YT-Ay1" imageView="E9l-am-4OS" style="IBUITableViewCellStyleSubtitle" id="zWU-W3-IWg">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StaffCell" textLabel="Es5-Rp-iuJ" detailTextLabel="q2b-YT-Ay1" imageView="E9l-am-4OS" style="IBUITableViewCellStyleSubtitle" id="zWU-W3-IWg">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Es5-Rp-iuJ">
@@ -36,7 +36,7 @@
                                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="man_24.png" id="E9l-am-4OS">
+                                        <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="checkmark.png" id="E9l-am-4OS">
                                             <rect key="frame" x="9" y="9" width="24" height="24"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -51,9 +51,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Kiandra" id="6GI-F7-oAF">
-                        <barButtonItem key="rightBarButtonItem" title="Checkout" id="c75-5W-M2X">
+                        <barButtonItem key="leftBarButtonItem" title="Check-in" id="tM7-H9-bOx"/>
+                        <barButtonItem key="rightBarButtonItem" title="Check-out" id="c75-5W-M2X">
                             <connections>
-                                <segue destination="SCV-Qq-c7l" kind="modal" identifier="Checkout" id="oYV-Ug-ABs"/>
+                                <segue destination="SCV-Qq-c7l" kind="modal" identifier="Checkout" modalTransitionStyle="flipHorizontal" id="oYV-Ug-ABs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -175,8 +176,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home_24.png" width="24" height="24"/>
-        <image name="man_24.png" width="24" height="24"/>
+        <image name="checkmark.png" width="24" height="24"/>
+        <image name="home_24.png" width="16" height="16"/>
+        <image name="man_24.png" width="16" height="16"/>
     </resources>
     <classes>
         <class className="CheckoutViewController" superclassName="UITableViewController">
