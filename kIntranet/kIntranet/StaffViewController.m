@@ -29,7 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    [self tableView].allowsMultipleSelection = TRUE;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -62,6 +64,7 @@
     return [self.employees count];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StaffCell"];
@@ -90,6 +93,11 @@
     else
     {
         cell.detailTextLabel.textColor = [UIColor darkGrayColor];
+    }
+    
+    if (staff.selected == FALSE)
+    {
+        cell.imageView.hidden = TRUE;
     }
     
     return cell;
@@ -136,31 +144,33 @@
 
 #pragma mark - Table view delegate
 
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].imageView.hidden = TRUE;
+    
+    selectedCells = [self.tableView indexPathsForSelectedRows];
+    
+    if (selectedCells.count == 0)
+    {
+        self.navigationItem.rightBarButtonItem.enabled = FALSE;
+        self.navigationItem.leftBarButtonItem.enabled = FALSE;
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-    if ([tableView cellForRowAtIndexPath:indexPath].imageView.hidden == TRUE)
-    {
-        [tableView cellForRowAtIndexPath:indexPath].imageView.hidden = FALSE;
-    }
-    else
-    {
-        [tableView cellForRowAtIndexPath:indexPath].imageView.hidden = TRUE;
-    }
+    [tableView cellForRowAtIndexPath:indexPath].imageView.hidden = FALSE;
 
     Staff *staff = [self.employees objectAtIndex:indexPath.row];
     staff.selected = [tableView cellForRowAtIndexPath:indexPath].imageView.hidden == TRUE;
     
     selectedCells = [self.tableView indexPathsForSelectedRows];
-
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    
+    if (selectedCells.count > 0)
+    {
+        self.navigationItem.rightBarButtonItem.enabled = TRUE;
+        self.navigationItem.leftBarButtonItem.enabled = TRUE;
+    }
 }
 
 #pragma mark - PlayerDetailsViewControllerDelegate
@@ -175,6 +185,15 @@
     }
 }
 
+-(NSArray*)selectedStaff:(CheckoutViewController *)controller
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"selected = FALSE"];
+    
+    NSArray *selected = [[self employees] filteredArrayUsingPredicate:predicate];
+    
+    return selected;
+}
+
 -(void)checkoutViewControllerDidCancel:(CheckoutViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -182,6 +201,8 @@
 
 -(void)checkoutViewControllerDidSave:(CheckoutViewController *)controller
 {
+    [self.tableView reloadData];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

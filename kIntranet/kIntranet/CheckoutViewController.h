@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Staff.h"
 
 @class CheckoutViewController;
 
 @protocol CheckoutViewControllerDelegate <NSObject>
 -(void)checkoutViewControllerDidCancel : (CheckoutViewController *)controller;
 -(void)checkoutViewControllerDidSave : (CheckoutViewController *)controller;
+-(NSArray*)selectedStaff : (CheckoutViewController *)controller;
 @end
 
 @interface CheckoutViewController : UITableViewController
 
 @property (nonatomic, strong) id <CheckoutViewControllerDelegate> delegate;
-
 - (IBAction)cancel: (id)sender;
 - (IBAction)done: (id)sender;
-
 @end

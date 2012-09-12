@@ -51,8 +51,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Kiandra" id="6GI-F7-oAF">
-                        <barButtonItem key="leftBarButtonItem" title="Check-in" id="tM7-H9-bOx"/>
-                        <barButtonItem key="rightBarButtonItem" title="Check-out" id="c75-5W-M2X">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Check-in" id="tM7-H9-bOx"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Check-out" id="c75-5W-M2X">
                             <connections>
                                 <segue destination="SCV-Qq-c7l" kind="modal" identifier="Checkout" modalTransitionStyle="flipHorizontal" id="oYV-Ug-ABs"/>
                             </connections>

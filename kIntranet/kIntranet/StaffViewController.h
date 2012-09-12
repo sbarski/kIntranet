@@ -10,7 +10,7 @@
 #import "Staff.h"
 #import "CheckoutViewController.h"
 
-@interface StaffViewController : UITableViewController <CheckoutViewControllerDelegate>
+@interface StaffViewController : UITableViewController<CheckoutViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *employees; //mutable array property
 @property (nonatomic, strong) NSArray *selectedCells;

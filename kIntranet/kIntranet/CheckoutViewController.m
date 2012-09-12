@@ -136,6 +136,16 @@
 
 -(IBAction)done:(id)sender
 {
+    //NSMutableArray *arr = [self.delegate staffViewController:self].employees;
+    
+    //[self.delegate staffViewController:self employees]
+    //StaffViewController *appDelegate = (StaffViewController *)[[UIApplication sharedApplication] delegate];
+    
+    for (Staff *staff in [self.delegate selectedStaff:self])
+    {
+        staff.selected = FALSE;
+    }
+    
     [self.delegate checkoutViewControllerDidSave:self];
 }
 
