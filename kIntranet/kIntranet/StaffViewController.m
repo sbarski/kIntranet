@@ -69,6 +69,29 @@
     cell.textLabel.text = staff.name;
     cell.detailTextLabel.text = staff.location;
     
+    if (staff.checkin != nil)
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"mm:hh dd/MM/yyyy"];
+        
+        //Optionally for time zone converstions
+        [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+        
+        NSString *stringFromDate = [formatter stringFromDate:staff.checkin];
+        
+        cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:@ " - "];
+
+        cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:stringFromDate];
+        
+        cell.detailTextLabel.textColor = [UIColor redColor];
+        
+        [formatter release];
+    }
+    else
+    {
+        cell.detailTextLabel.textColor = [UIColor darkGrayColor];
+    }
+    
     return cell;
 }
 
