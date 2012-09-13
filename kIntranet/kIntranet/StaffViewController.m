@@ -75,7 +75,7 @@
     if (staff.checkin != nil)
     {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"mm:hh dd/MM/yyyy"];
+        [formatter setDateFormat:@"HH:mm dd/MM/yyyy"];
         
         //Optionally for time zone converstions
         [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
@@ -86,7 +86,8 @@
 
         cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:stringFromDate];
         
-        cell.detailTextLabel.textColor = [UIColor redColor];
+        cell.textLabel.textColor = [UIColor redColor];
+        //cell.detailTextLabel.textColor = [UIColor redColor];
         
         [formatter release];
     }

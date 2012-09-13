@@ -17,9 +17,17 @@
 -(NSArray*)selectedStaff : (CheckoutViewController *)controller;
 @end
 
-@interface CheckoutViewController : UITableViewController
+@interface CheckoutViewController : UITableViewController<UIActionSheetDelegate>
+
+@property (nonatomic, copy) NSString *location;
+@property (nonatomic, copy) NSDate *checkout;
+@property (nonatomic, copy) NSDate *checkin;
 
 @property (nonatomic, strong) id <CheckoutViewControllerDelegate> delegate;
+
+@property (retain, nonatomic) IBOutlet UITextField *locationTextField;
+
 - (IBAction)cancel: (id)sender;
 - (IBAction)done: (id)sender;
+
 @end
