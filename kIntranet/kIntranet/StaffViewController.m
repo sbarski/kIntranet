@@ -17,6 +17,7 @@
 @synthesize employees;
 @synthesize selectedCells;
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -72,7 +73,7 @@
     cell.textLabel.text = staff.name;
     cell.detailTextLabel.text = staff.location;
     
-    if (staff.checkin != nil)
+    if (staff.checkin != nil && staff.checkout != nil)
     {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"HH:mm dd/MM/yyyy"];
@@ -87,13 +88,13 @@
         cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:stringFromDate];
         
         cell.textLabel.textColor = [UIColor redColor];
-        //cell.detailTextLabel.textColor = [UIColor redColor];
         
         [formatter release];
     }
     else
     {
         cell.detailTextLabel.textColor = [UIColor darkGrayColor];
+        cell.textLabel.textColor = [UIColor darkGrayColor];
     }
     
     if (staff.selected == FALSE)
@@ -142,8 +143,27 @@
     return YES;
 }
 */
+- (IBAction)checkInStaff:(id)sender {
+    selectedCells = [self.tableView indexPathsForSelectedRows];
+    
+    for (int i = 0; i < selectedCells.count; i++)
+    {
+        NSIndexPath *path = [selectedCells objectAtIndex:i];
+               
+        Staff *staff = [self.employees objectAtIndex:[path row]];
+        staff.selected = FALSE;
+        staff.checkin = nil;
+        staff.checkout = nil;
+    }
+    
+    self.navigationItem.rightBarButtonItem.enabled = FALSE;
+    self.navigationItem.leftBarButtonItem.enabled = FALSE;
+    
+    [self.tableView reloadData];
+}
 
 #pragma mark - Table view delegate
+
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -163,7 +183,7 @@
     [tableView cellForRowAtIndexPath:indexPath].imageView.hidden = FALSE;
 
     Staff *staff = [self.employees objectAtIndex:indexPath.row];
-    staff.selected = [tableView cellForRowAtIndexPath:indexPath].imageView.hidden == TRUE;
+    staff.selected = TRUE;
     
     selectedCells = [self.tableView indexPathsForSelectedRows];
     
@@ -188,8 +208,8 @@
 
 -(NSArray*)selectedStaff:(CheckoutViewController *)controller
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"selected = FALSE"];
-    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isSelected = TRUE"];
+
     NSArray *selected = [[self employees] filteredArrayUsingPredicate:predicate];
     
     return selected;
@@ -204,7 +224,15 @@
 {
     [self.tableView reloadData];
     
+    self.navigationItem.rightBarButtonItem.enabled = FALSE;
+    self.navigationItem.leftBarButtonItem.enabled = FALSE;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)dealloc {
+    [super dealloc];
+}
+
 
 @end

@@ -16,4 +16,9 @@
 @synthesize checkout;
 @synthesize selected;
 
+-(BOOL)isSelected
+{
+    return [self selected];
+}
+
 @end

@@ -16,4 +16,6 @@
 @property (nonatomic, copy) NSDate *checkin;
 @property (nonatomic, assign) BOOL selected;
 
+-(BOOL)isSelected;
+
 @end

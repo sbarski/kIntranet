@@ -12,13 +12,17 @@
 
 @end
 
-
-
 @implementation CheckoutViewController
 
 @synthesize location;
+@synthesize temporaryLocation;
+
 @synthesize checkin;
 @synthesize checkout;
+@synthesize locations;
+
+@synthesize locationPicker;
+@synthesize datePicker;
 
 @synthesize delegate;
 @synthesize locationTextField;
@@ -32,45 +36,20 @@
     return self;
 }
 
-- (void)setDateTime
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"HH:mm dd/MM/yyyy"];
-    
-    if (checkin != nil)
-    {
-        NSIndexPath *checkInIndexPath = [[[NSIndexPath alloc] initWithIndex:1]autorelease];
-        
-        UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:checkInIndexPath];
-        cell.textLabel.text = [formatter stringFromDate:checkin];
-    }
-    
-    if (checkout != nil)
-    {
-        NSIndexPath *checkOutIndexPath = [[[NSIndexPath alloc] initWithIndex:2]autorelease];
-        
-        UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:checkOutIndexPath];
-        cell.textLabel.text = [formatter stringFromDate:checkout];
-    }
-    
-    [formatter release];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   
+    self.locations = [[NSMutableArray alloc]init];
     
-    [self setDateTime];
+    [self.locations addObject:@"Cafe"];
+    [self.locations addObject:@"Client"];
+    [self.locations addObject:@"Boardroom"];
+    [self.locations addObject:@"Other"];
 
-    checkout = [NSDate date];
-    checkin = [[NSDate date] dateByAddingTimeInterval:3600];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.location = [self.locations objectAtIndex:0];
+    self.checkout = [NSDate date];
+    self.checkin = [[NSDate date] dateByAddingTimeInterval:3600];
 }
 
 - (void)viewDidUnload
@@ -79,9 +58,9 @@
     [self setCheckin:nil];
     [self setCheckout:nil];
     [self setLocation:nil];
+    [self setLocations:nil];
+    [self setTemporaryLocation:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -164,33 +143,82 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.selected = FALSE;
     
-    //wrong delegate?
-    //checkout = [NSDate date];
-    //checkin = [[NSDate date] dateByAddingTimeInterval:3600];
-    
-    if (indexPath.section == 0 && indexPath.row == 1)
+    if (indexPath.section == 0)
     {
-        [self.locationTextField becomeFirstResponder];
+        if (indexPath.row == 0)
+        {
+            [self showLocationPicker];
+        }
+        else
+        {
+       		[self.locationTextField becomeFirstResponder];
+        }
     }
     else if (indexPath.section > 0)
     {
         [self showDatePicker:indexPath.section];
     }
+}
 
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+-(void)showLocationPicker
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    
+    locationPicker = actionSheet;
+    
+    CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
+    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
+    
+    [actionSheet addSubview:pickerView];
+    [actionSheet showInView:self.view];
+    
+    pickerView.showsSelectionIndicator = YES;
+    pickerView.dataSource = self;
+    pickerView.delegate = self;
+    
+    CGRect menuRect = actionSheet.frame;
+    CGFloat orgHeight = menuRect.size.height;
+    menuRect.origin.y -= 214;
+    menuRect.size.height = orgHeight + 300;
+    actionSheet.frame = menuRect;
+    
+    CGRect pickerRect = pickerView.frame;
+    pickerRect.origin.y = 174;
+    pickerView.frame = pickerRect;
+    
+    self.temporaryLocation = [self.locations objectAtIndex:0];
+    
+    [pickerView release];
+    [actionSheet release];
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.locations count];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [self.locations objectAtIndex:row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.temporaryLocation = [self.locations objectAtIndex:row];
 }
 
 -(void)showDatePicker:(NSInteger)section
 {
     UIActionSheet *menu = [[UIActionSheet alloc] initWithTitle:@"Select date and time" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"OK", nil];
     UIDatePicker *pickerView = [[UIDatePicker alloc]init];
+    
+    datePicker = menu;
     
     if (section == 1 && checkout != nil)
     {
@@ -224,36 +252,70 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0)
+    if (actionSheet == datePicker)
     {
-        UIDatePicker *datePicker = [[actionSheet subviews] objectAtIndex:3];
-        
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:actionSheet.tag];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        
-        NSDateFormatter *formatter = [[[NSDateFormatter alloc]init]autorelease];
-        [formatter setDateFormat:@"HH:mm dd/MM/yyyy"];
-        
-        //Update the labels and save dates
-        switch (actionSheet.tag) {
-            case 1:
-                checkout = datePicker.date.copy;
-
-                cell.textLabel.text = [formatter stringFromDate:checkout];
-                [cell.textLabel sizeToFit];
-                break;
-                
-            case 2:
-                checkin = datePicker.date.copy;
-
-                cell.textLabel.text = [formatter stringFromDate:checkin];
-                [cell.textLabel sizeToFit];
-                break;
-                
-            default:
-                break;
+        if (buttonIndex == 0)
+        {
+            UIDatePicker *selection = [[actionSheet subviews] objectAtIndex:3];
+            
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:actionSheet.tag];
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            
+            NSDateFormatter *formatter = [[[NSDateFormatter alloc]init]autorelease];
+            [formatter setDateFormat:@"HH:mm dd/MM/yyyy"];
+            
+            //Update the labels and save dates
+            switch (actionSheet.tag) {
+                case 1:
+                    self.checkout = [selection date];
+                    
+                    cell.textLabel.text = [formatter stringFromDate:checkout];
+                    [cell.textLabel sizeToFit];
+                    break;
+                    
+                case 2:
+                    self.checkin = [selection date];
+                    
+                    cell.textLabel.text = [formatter stringFromDate:checkin];
+                    [cell.textLabel sizeToFit];
+                    break;
+                    
+                default:
+                    break;
+            }
         }
     }
+    else
+    {
+        if (buttonIndex == 0)
+        {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            
+            cell.textLabel.text = self.location = self.temporaryLocation;
+            [cell.textLabel sizeToFit];
+        }
+    }
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField.text.length > 0)
+    {
+        self.location = textField.text;
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        cell.textLabel.text = @"Custom Location";
+        [cell.textLabel sizeToFit];
+    }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
 }
 
 -(IBAction)cancel:(id)sender
@@ -263,15 +325,11 @@
 
 -(IBAction)done:(id)sender
 {
-    //NSMutableArray *arr = [self.delegate staffViewController:self].employees;
-    
-    //[self.delegate staffViewController:self employees]
-    //StaffViewController *appDelegate = (StaffViewController *)[[UIApplication sharedApplication] delegate];
-    
     for (Staff *staff in [self.delegate selectedStaff:self])
     {
-        staff.checkin = checkin;
-        staff.checkout = checkout;
+        staff.checkin = self.checkin;
+        staff.checkout = self.checkout;
+        staff.location = self.location;
         staff.selected = FALSE;
     }
     
@@ -280,9 +338,8 @@
 
 - (void)dealloc {
     [locationTextField release];
-    [checkin release];
-    [checkout release];
-    [location release];
+    [locations release];
+    [temporaryLocation release];
     [super dealloc];
 }
 @end

@@ -15,4 +15,7 @@
 @property (nonatomic, strong) NSMutableArray *employees; //mutable array property
 @property (nonatomic, strong) NSArray *selectedCells;
 
+- (IBAction)checkInStaff:(id)sender;
+
+
 @end
