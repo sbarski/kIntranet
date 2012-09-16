@@ -17,6 +17,9 @@
 @synthesize employees;
 @synthesize selectedCells;
 
+@synthesize firstName;
+@synthesize lastName;
+@synthesize userid;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,15 +36,32 @@
     
     [self tableView].allowsMultipleSelection = TRUE;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self performSelector:@selector(handleLogin) withObject:nil afterDelay:0];
+   
+}
+
+-(void)handleLogin
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+        
+    if (!appDelegate.isAuthenticated)
+    {
+        UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
+        
+        LoginViewController *loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginScreen"];
+        
+        loginController.delegate = self;
+                
+        [self presentModalViewController:loginController animated:YES];
+    }
 }
 
 - (void)viewDidUnload
 {
+    [self setFirstName:nil];
+    [self setLastName:nil];
+    [self setUserid:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -105,44 +125,6 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 - (IBAction)checkInStaff:(id)sender {
     selectedCells = [self.tableView indexPathsForSelectedRows];
     
@@ -192,6 +174,27 @@
         self.navigationItem.rightBarButtonItem.enabled = TRUE;
         self.navigationItem.leftBarButtonItem.enabled = TRUE;
     }
+}
+
+
+-(BOOL)loginToKIntranet:(LoginViewController *)controller currentUserid:(NSString *)authenticatedUserId currentFirstName:(NSString *)authenticatedFirstName currentLastName:(NSString *)authenticatedLastName
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    
+    appDelegate.isAuthenticated = true;
+    
+    return YES;
+}
+
+
+-(void)logoutUser:(MyViewController *)controller
+{
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    
+    appDelegate.isAuthenticated = FALSE;
+    
+    [self handleLogin];
 }
 
 #pragma mark - PlayerDetailsViewControllerDelegate

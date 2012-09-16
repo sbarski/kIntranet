@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Staff.h"
 #import "StaffViewController.h"
+#import "LoginViewController.h"
+#import "MyViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class AppDelegate;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, LoginViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic, assign) BOOL isAuthenticated;
 
 @end

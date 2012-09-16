@@ -32,6 +32,10 @@
 		CBA96A1115FF1B330070F983 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA96A0F15FF1B330070F983 /* MainStoryboard.storyboard */; };
 		CBA96A1415FF1B330070F983 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA96A1315FF1B330070F983 /* ViewController.m */; };
 		CBC70CCF15FF799E006F7434 /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC70CCE15FF799E006F7434 /* CheckoutViewController.m */; };
+		CBC70CDB1603371F006F7434 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC70CDA1603371F006F7434 /* LoginViewController.m */; };
+		CBC70CE01605DA77006F7434 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC70CDF1605DA77006F7434 /* Security.framework */; };
+		CBC70CE31605DC0B006F7434 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC70CE21605DC0B006F7434 /* KeychainItemWrapper.m */; };
+		CBC70CEC1605F7B1006F7434 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC70CEB1605F7B1006F7434 /* MyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +72,13 @@
 		CBA96A1315FF1B330070F983 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CBC70CCD15FF799E006F7434 /* CheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutViewController.h; sourceTree = "<group>"; };
 		CBC70CCE15FF799E006F7434 /* CheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutViewController.m; sourceTree = "<group>"; };
+		CBC70CD91603371F006F7434 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		CBC70CDA1603371F006F7434 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		CBC70CDF1605DA77006F7434 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CBC70CE11605DC0B006F7434 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		CBC70CE21605DC0B006F7434 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		CBC70CEA1605F7B1006F7434 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		CBC70CEB1605F7B1006F7434 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBC70CE01605DA77006F7434 /* Security.framework in Frameworks */,
 				CBA969FE15FF1B330070F983 /* UIKit.framework in Frameworks */,
 				CBA96A0015FF1B330070F983 /* Foundation.framework in Frameworks */,
 				CBA96A0215FF1B330070F983 /* CoreGraphics.framework in Frameworks */,
@@ -105,6 +117,7 @@
 		CBA969EE15FF1B330070F983 = {
 			isa = PBXGroup;
 			children = (
+				CBC70CDF1605DA77006F7434 /* Security.framework */,
 				CB98FF7D1600787600E75851 /* icon@2x.png */,
 				CB98FF7B1600786D00E75851 /* icon.png */,
 				CB98FF791600756E00E75851 /* Default@2x.png */,
@@ -149,6 +162,12 @@
 				CB911A9915FF6952003ECD79 /* Staff.m */,
 				CBC70CCD15FF799E006F7434 /* CheckoutViewController.h */,
 				CBC70CCE15FF799E006F7434 /* CheckoutViewController.m */,
+				CBC70CD91603371F006F7434 /* LoginViewController.h */,
+				CBC70CDA1603371F006F7434 /* LoginViewController.m */,
+				CBC70CE11605DC0B006F7434 /* KeychainItemWrapper.h */,
+				CBC70CE21605DC0B006F7434 /* KeychainItemWrapper.m */,
+				CBC70CEA1605F7B1006F7434 /* MyViewController.h */,
+				CBC70CEB1605F7B1006F7434 /* MyViewController.m */,
 			);
 			path = kIntranet;
 			sourceTree = "<group>";
@@ -247,6 +266,9 @@
 				CB911A9715FF68A1003ECD79 /* StaffViewController.m in Sources */,
 				CB911A9A15FF6952003ECD79 /* Staff.m in Sources */,
 				CBC70CCF15FF799E006F7434 /* CheckoutViewController.m in Sources */,
+				CBC70CDB1603371F006F7434 /* LoginViewController.m in Sources */,
+				CBC70CE31605DC0B006F7434 /* KeychainItemWrapper.m in Sources */,
+				CBC70CEC1605F7B1006F7434 /* MyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

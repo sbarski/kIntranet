@@ -13,6 +13,8 @@
     NSMutableArray *employees;
 }
 
+@synthesize isAuthenticated;
+
 - (void)dealloc
 {
     [_window release];
@@ -23,6 +25,8 @@
 {
     // Override point for customization after application launch.
     employees = [NSMutableArray arrayWithCapacity:100];
+    
+    self.isAuthenticated = false;
     
     Staff *staff = [[Staff alloc] init];
     staff.name = @"Peter Sbarski";
@@ -41,12 +45,16 @@
     [employees addObject:staff];
     
     UITabBarController *tabBarController = (UITabBarController *) self.window.rootViewController;
+    
     UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
+    
     StaffViewController *staffViewController = [[navigationController viewControllers] objectAtIndex:0];
     staffViewController.employees = employees;
-    
+          
     return YES;
 }
+
+
 
 - (NSDate*) getCurrentDate:(NSInteger)hours
 {
@@ -59,6 +67,14 @@
     
     return date;
 }
+
+-(BOOL)loginToKIntranet:(LoginViewController *)controller currentUserid:(NSString *)authenticatedUserId currentFirstName:(NSString *)authenticatedFirstName currentLastName:(NSString *)authenticatedLastName
+{
+    self.isAuthenticated = true;
+    
+    return YES;
+}
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
