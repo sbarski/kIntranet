@@ -36,7 +36,6 @@
     
     [self tableView].allowsMultipleSelection = TRUE;
     
-    
     [self performSelector:@selector(handleLogin) withObject:nil afterDelay:0];
    
 }
@@ -51,7 +50,7 @@
         
         LoginViewController *loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginScreen"];
         
-        loginController.delegate = self;
+        loginController.delegate = appDelegate;
                 
         [self presentModalViewController:loginController animated:YES];
     }
@@ -185,7 +184,6 @@
     
     return YES;
 }
-
 
 -(void)logoutUser:(MyViewController *)controller
 {

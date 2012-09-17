@@ -14,8 +14,6 @@
 
 @implementation MyViewController
 
-@synthesize delegate;
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -28,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -117,29 +115,19 @@
 
 #pragma mark - Table view delegate
 
--(BOOL)loginToKIntranet:(LoginViewController *)controller currentUserid:(NSString *)authenticatedUserId currentFirstName:(NSString *)authenticatedFirstName currentLastName:(NSString *)authenticatedLastName
-{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    appDelegate.isAuthenticated = true;
-    
-    return YES;
-}
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 && indexPath.row == 0)
     {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-
-        appDelegate.isAuthenticated = FALSE;
+        
+        [appDelegate logoutUser];
         
         UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
         
         LoginViewController *loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginScreen"];
         
-        loginController.delegate = self;
+        loginController.delegate = appDelegate;
           
         [self presentModalViewController:loginController animated:YES];
     }

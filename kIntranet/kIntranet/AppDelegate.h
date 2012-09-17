@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AFJSONRequestOperation.h"
+
 #import "Staff.h"
 #import "StaffViewController.h"
 #import "LoginViewController.h"

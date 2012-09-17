@@ -12,7 +12,9 @@
 @class LoginViewController;
 
 @protocol LoginViewControllerDelegate <NSObject>
--(BOOL)loginToKIntranet : (LoginViewController *)controller currentUserid : (NSString*)authenticatedUserId currentFirstName: (NSString*)authenticatedFirstName currentLastName:(NSString *)authenticatedLastName;
+-(BOOL)manualUserLogin : (LoginViewController *)controller username : (NSString*)username password: (NSString*)password;
+-(BOOL)automaticUserLoginSuccess;
+-(BOOL)logoutUser;
 @end
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate>

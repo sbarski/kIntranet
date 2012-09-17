@@ -38,20 +38,6 @@
     self.usernameField.delegate = self;
     
     [super viewDidLoad];
-    
-    
-    if ([self automaticUserLoginSuccess])
-    {
-        NSString *userid = @"abc";
-        NSString *firstName = @"Peter";
-        NSString *lastName = @"Sbarski";
-        
-        if ([self.delegate loginToKIntranet:self currentUserid:userid currentFirstName:firstName currentLastName:lastName])
-        {
-            [self dismissModalViewControllerAnimated:YES];
-        }
-    }
-	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
@@ -60,38 +46,6 @@
     [self setUsernameField:nil];
         
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
--(BOOL)automaticUserLoginSuccess
-{
-    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc]initWithIdentifier:@"kIntranet Login" accessGroup:nil];
-    
-    NSString *username = [keychainItem objectForKey:kSecAttrAccount];
-        
-    if (username == nil)
-    {
-        return NO;
-    }
-
-    NSString *password = [keychainItem objectForKey:kSecValueData];
-    
-    if (password == nil)
-    {
-        return NO;
-    }
-    
-    //try to login and if fail show message box and return
-    if (username != nil && password != nil)
-    {
-        //authenticate
-    }
-    
-    [keychainItem resetKeychainItem];
-        
-    [keychainItem release];
-    
-    return YES;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -211,20 +165,9 @@
         [loginIndicator startAnimating];
     
         self.loginButton.enabled = FALSE;
-        
-        NSString *userid = @"abc";
-        NSString *firstName = @"Peter";
-        NSString *lastName = @"Sbarski";
                 
-        if ([self.delegate loginToKIntranet:self currentUserid:userid currentFirstName:firstName currentLastName:lastName])
+        if ([self.delegate manualUserLogin:self username:self.usernameField.text password:self.passwordField.text])
         {
-            KeychainItemWrapper *keychainItem =[[KeychainItemWrapper alloc] initWithIdentifier:@"kIntranet Login" accessGroup:nil];
-            
-            [keychainItem setObject:self.usernameField.text forKey:kSecAttrAccount];
-            [keychainItem setObject:self.passwordField.text forKey:kSecValueData];
-                       
-            [keychainItem release];
-            
             [self dismissModalViewControllerAnimated:YES];
         }
         else

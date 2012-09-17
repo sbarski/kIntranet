@@ -50,11 +50,12 @@
     
     StaffViewController *staffViewController = [[navigationController viewControllers] objectAtIndex:0];
     staffViewController.employees = employees;
+    
+    //try automatic sign in
+    [self automaticUserLoginSuccess];
           
     return YES;
 }
-
-
 
 - (NSDate*) getCurrentDate:(NSInteger)hours
 {
@@ -68,11 +69,80 @@
     return date;
 }
 
--(BOOL)loginToKIntranet:(LoginViewController *)controller currentUserid:(NSString *)authenticatedUserId currentFirstName:(NSString *)authenticatedFirstName currentLastName:(NSString *)authenticatedLastName
+-(BOOL)manualUserLogin:(LoginViewController *)controller username:(NSString *)username password:(NSString *)password
 {
-    self.isAuthenticated = true;
+    if ([self authenticateUser:username password:password])
+    {
+        KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc]initWithIdentifier:@"kIntranet Login" accessGroup:nil];
+        
+        [keychainItem setObject:username forKey:kSecAttrAccount];
+        
+        [keychainItem setObject:password forKey:kSecValueData];
+        
+        self.isAuthenticated = true;
+        
+        return true;
+    }
     
-    return YES;
+    return false;
+}
+
+-(BOOL)automaticUserLoginSuccess
+{
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc]initWithIdentifier:@"kIntranet Login" accessGroup:nil];
+    
+    NSString *username = [keychainItem objectForKey:kSecAttrAccount];
+    NSString *password = [keychainItem objectForKey:kSecValueData];
+    
+    if (username == nil || [username isEqualToString:@""])
+    {
+        return NO;
+    }
+    
+    if (password == nil || [password isEqualToString:@""])
+    {
+        return NO;
+    }
+
+    [keychainItem release];
+
+    BOOL isAuthenticationSuccessful = [self authenticateUser:username password:password];
+    
+    self.isAuthenticated = isAuthenticationSuccessful;
+    
+    return isAuthenticationSuccessful;
+}
+
+-(BOOL)logoutUser
+{
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc]initWithIdentifier:@"kIntranet Login" accessGroup:nil];
+    
+    [keychainItem resetKeychainItem];
+    
+    [keychainItem release];
+    
+    return true;
+}
+
+
+-(void)loadStaffList
+{
+    NSURL *url = [NSURL URLWithString:@"http://transit.local/api/values"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"IP Address: %@", [JSON valueForKey:@"origin"]);
+    } failure:nil];
+}
+
+-(BOOL)authenticateUser:(NSString *)username password:(NSString*)password
+{
+    NSURL *url = [NSURL URLWithString:@"http://transit.local/api/values"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AF
+    
+    return true;
 }
 
 							

@@ -11,12 +11,6 @@
 
 @class MyViewController;
 
-@protocol MyViewControllerDelegate <NSObject>
--(void)logoutUser : (MyViewController *)controller;
-@end
-
 @interface MyViewController : UITableViewController<LoginViewControllerDelegate>
-
-@property (nonatomic, strong) id <MyViewControllerDelegate> delegate;
 
 @end
