@@ -140,7 +140,7 @@
     NSURL *url = [NSURL URLWithString:@"http://transit.local/api/values"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    AF
+    
     
     return true;
 }
