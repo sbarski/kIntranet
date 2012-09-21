@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFJSONRequestOperation.h"
-#import "AFHTTPRequestOperation.h"
-#import "AFHTTPClient.h"
+#import "RESTClient.h"
 
 #import "Staff.h"
 #import "StaffViewController.h"
@@ -18,7 +16,7 @@
 
 @class AppDelegate;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, LoginViewControllerDelegate, NSURLConnectionDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, LoginViewControllerDelegate, RESTClientDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

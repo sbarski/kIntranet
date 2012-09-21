@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369553566.718253"
+         timestampString = "369713261.611324"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
+         startingLineNumber = "64"
+         endingLineNumber = "64"
          landmarkName = "-getCurrentDate:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -706,20 +706,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369667543.305683"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "130"
-         endingLineNumber = "130"
-         landmarkName = "-loadStaffList"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kIntranet/LoginViewController.m"
@@ -736,12 +723,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369667543.305683"
+         timestampString = "369713261.611324"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "134"
-         endingLineNumber = "134"
-         landmarkName = "-loadStaffList"
+         startingLineNumber = "96"
+         endingLineNumber = "96"
+         landmarkName = "-loginToIntranet"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -749,50 +736,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369667543.305683"
+         timestampString = "369713983.355686"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "135"
-         endingLineNumber = "135"
-         landmarkName = "-loadStaffList"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369553586.560581"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "111"
-         endingLineNumber = "111"
-         landmarkName = "-automaticUserLoginSuccess"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369553593.613115"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "92"
-         endingLineNumber = "92"
-         landmarkName = "-automaticUserLoginSuccess"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369553794.336071"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "118"
-         endingLineNumber = "118"
+         startingLineNumber = "124"
+         endingLineNumber = "124"
          landmarkName = "-logoutUser"
          landmarkType = "5">
       </FileBreakpoint>
@@ -801,129 +749,23 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kIntranet/AppDelegate.h"
-         timestampString = "369652629.716667"
+         timestampString = "369713261.611324"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "21"
-         endingLineNumber = "21"
-         landmarkName = "@interface AppDelegate"
-         landmarkType = "2">
+         startingLineNumber = "17"
+         endingLineNumber = "17">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "AFNetworking/AFURLConnectionOperation.m"
-         timestampString = "369663016.531157"
+         filePath = "kIntranet/StaffViewController.m"
+         timestampString = "369713048.812632"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "564"
-         endingLineNumber = "564"
-         landmarkName = "@implementation AFURLConnectionOperation"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "AFNetworking/AFHTTPRequestOperation.m"
-         timestampString = "369663443.525482"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "314"
-         endingLineNumber = "314"
-         landmarkName = "-connection:didReceiveResponse:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "AFNetworking/AFHTTPRequestOperation.m"
-         timestampString = "369663494.639944"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "297"
-         endingLineNumber = "297"
-         landmarkName = "-connection:didReceiveResponse:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369670109.130849"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "229"
-         endingLineNumber = "229"
-         landmarkName = "-authenticateUser:password:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369670109.130849"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
-         landmarkName = "-authenticateUser:password:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369670109.130849"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "194"
-         endingLineNumber = "194"
-         landmarkName = "-authenticateUser:password:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369669225.596757"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "154"
-         endingLineNumber = "154"
-         landmarkName = "-connection:didReceiveResponse:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369667543.305683"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "139"
-         endingLineNumber = "139"
-         landmarkName = "-connection:canAuthenticateAgainstProtectionSpace:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369669225.596757"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "151"
-         endingLineNumber = "151"
-         landmarkName = "-connection:didReceiveAuthenticationChallenge:"
+         startingLineNumber = "45"
+         endingLineNumber = "45"
+         landmarkName = "-handleLogin"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -931,11 +773,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369667061.370627"
+         timestampString = "369713252.361403"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "74"
-         endingLineNumber = "74"
+         startingLineNumber = "78"
+         endingLineNumber = "78"
          landmarkName = "-manualUserLogin:username:password:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -944,51 +786,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369669567.429358"
+         timestampString = "369713254.706298"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "155"
-         endingLineNumber = "155"
-         landmarkName = "-connection:didReceiveResponse:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369670109.130849"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "172"
-         endingLineNumber = "172"
-         landmarkName = "-connection:didReceiveData:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369670109.130849"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "185"
-         endingLineNumber = "185"
-         landmarkName = "-connection:didFailWithError:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369670109.130849"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "188"
-         endingLineNumber = "188"
-         landmarkName = "-connectionDidFinishLoading:"
+         startingLineNumber = "95"
+         endingLineNumber = "95"
+         landmarkName = "-loginToIntranet"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -996,12 +799,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369669218.710102"
+         timestampString = "369713257.26066"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "145"
-         endingLineNumber = "145"
-         landmarkName = "-connection:didReceiveAuthenticationChallenge:"
+         startingLineNumber = "63"
+         endingLineNumber = "63"
+         landmarkName = "-getCurrentDate:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1009,12 +812,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369670109.130849"
+         timestampString = "369713983.355686"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "182"
-         endingLineNumber = "182"
-         landmarkName = "-connection:didReceiveData:"
+         startingLineNumber = "118"
+         endingLineNumber = "118"
+         landmarkName = "-authenticateUser:and:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1022,12 +825,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kIntranet/AppDelegate.m"
-         timestampString = "369670109.130849"
+         timestampString = "369713983.355686"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "184"
-         endingLineNumber = "184"
-         landmarkName = "-connection:didFailWithError:"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
+         landmarkName = "-loginToIntranet"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "kIntranet/AppDelegate.m"
+         timestampString = "369713983.355686"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "107"
+         endingLineNumber = "107"
+         landmarkName = "-loginToIntranet"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

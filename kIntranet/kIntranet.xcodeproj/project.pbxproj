@@ -34,6 +34,7 @@
 		CB98FF7A1600756E00E75851 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB98FF791600756E00E75851 /* Default@2x.png */; };
 		CB98FF7C1600786D00E75851 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB98FF7B1600786D00E75851 /* icon.png */; };
 		CB98FF7E1600787600E75851 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB98FF7D1600787600E75851 /* icon@2x.png */; };
+		CBA099F316095C18002BAB5E /* RESTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA099F216095C18002BAB5E /* RESTClient.m */; };
 		CBA969FE15FF1B330070F983 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA969FD15FF1B330070F983 /* UIKit.framework */; };
 		CBA96A0015FF1B330070F983 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA969FF15FF1B330070F983 /* Foundation.framework */; };
 		CBA96A0215FF1B330070F983 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA96A0115FF1B330070F983 /* CoreGraphics.framework */; };
@@ -89,6 +90,8 @@
 		CB98FF791600756E00E75851 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		CB98FF7B1600786D00E75851 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CB98FF7D1600787600E75851 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		CBA099F116095C18002BAB5E /* RESTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTClient.h; sourceTree = "<group>"; };
+		CBA099F216095C18002BAB5E /* RESTClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTClient.m; sourceTree = "<group>"; };
 		CBA969F915FF1B330070F983 /* kIntranet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kIntranet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA969FD15FF1B330070F983 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CBA969FF15FF1B330070F983 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -229,6 +232,8 @@
 				CBC70CE21605DC0B006F7434 /* KeychainItemWrapper.m */,
 				CBC70CEA1605F7B1006F7434 /* MyViewController.h */,
 				CBC70CEB1605F7B1006F7434 /* MyViewController.m */,
+				CBA099F116095C18002BAB5E /* RESTClient.h */,
+				CBA099F216095C18002BAB5E /* RESTClient.m */,
 			);
 			path = kIntranet;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 				CB22B9631606B46B0069D346 /* AFURLConnectionOperation.m in Sources */,
 				CB22B9641606B46B0069D346 /* AFXMLRequestOperation.m in Sources */,
 				CB22B9651606B46B0069D346 /* UIImageView+AFNetworking.m in Sources */,
+				CBA099F316095C18002BAB5E /* RESTClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

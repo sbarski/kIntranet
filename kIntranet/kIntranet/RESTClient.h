@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RESTClient : NSObject
+@class RESTClient; 
+
+@protocol RESTClientDelegate <NSObject>
+-(void)authenticateUser:(BOOL)success and:(NSString*)token;
+@end
+
+@interface RESTClient : NSObject<NSURLConnectionDelegate>
+
+@property (nonatomic, strong) id<RESTClientDelegate> delegate;
+
+-(void)authenticateUserBy:(NSString*)token;
+
+-(void)authenticateUserBy:(NSString*)username andPassword:(NSString*)password;
 
 @end
