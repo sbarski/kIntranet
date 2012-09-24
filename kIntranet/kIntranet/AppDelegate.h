@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RESTClient.h"
+#import "RESTClientAuthentication.h"
 
 #import "Staff.h"
 #import "StaffViewController.h"
@@ -21,5 +21,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic, assign) BOOL isAuthenticated;
+
+@property (nonatomic, assign) LoginViewController *loginViewController;
 
 @end

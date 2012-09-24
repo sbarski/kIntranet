@@ -12,6 +12,8 @@
 #import "CheckoutViewController.h"
 #import "LoginViewController.h"
 
+#import "RESTClientKIntranet.h"
+
 @interface StaffViewController : UITableViewController<CheckoutViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *employees; //mutable array property

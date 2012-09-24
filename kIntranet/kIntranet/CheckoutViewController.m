@@ -60,6 +60,7 @@
     [self setLocation:nil];
     [self setLocations:nil];
     [self setTemporaryLocation:nil];
+    
     [super viewDidUnload];
 }
 
@@ -69,6 +70,8 @@
 }
 
 #pragma mark - Table view delegate
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -44,7 +44,7 @@
 {
     [self setPasswordField:nil];
     [self setUsernameField:nil];
-        
+    
     [super viewDidUnload];
 }
 
@@ -130,13 +130,13 @@
         [self setViewMovedUp:NO keyboardSize:kbSize];
     }
 }
- 
+
 
 -(void)keyboardWillHide:(NSNotification*) notification {
     // Animate the current view out of the way
     NSDictionary* info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-
+    
     if (self.view.frame.origin.y >= 0)
     {
         [self setViewMovedUp:YES keyboardSize:kbSize];
@@ -152,6 +152,30 @@
     [self.passwordField resignFirstResponder];
 }
 
+-(IBAction)userAuthenticationCompleted: (BOOL)success
+{
+    self.loginIndicator.hidden = TRUE;
+    
+    [loginIndicator stopAnimating];
+    
+    self.loginButton.enabled = TRUE;
+    
+    self.passwordField.text = @"";
+    
+    
+    if (success)
+    {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Could not login" message:@"kIntranet could not login. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alert show];
+        [alert release];
+    }
+}
+
 - (IBAction) login: (id) sender
 {
     //TODO: spawn a login thread
@@ -163,27 +187,10 @@
         self.loginIndicator.hidden = FALSE;
         
         [loginIndicator startAnimating];
-    
+        
         self.loginButton.enabled = FALSE;
-                
-        if ([self.delegate manualUserLogin:self username:self.usernameField.text password:self.passwordField.text])
-        {
-            [self dismissModalViewControllerAnimated:YES];
-        }
-        else
-        {
-            self.loginIndicator.hidden = TRUE;
-            
-            [loginIndicator stopAnimating];
-            
-            self.loginButton.enabled = TRUE;
-            
-            self.passwordField.text = @"";
-            
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Could not login" message:@"kIntranet could not login. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-            [alert release];
-        }
+        
+        [self.delegate manualUserLogin:self username:self.usernameField.text password:self.passwordField.text];
     }
     else
     {

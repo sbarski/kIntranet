@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB03CCD0161088C100BBC7D1 /* RESTClientKIntranet.m in Sources */ = {isa = PBXBuildFile; fileRef = CB03CCCF161088C100BBC7D1 /* RESTClientKIntranet.m */; };
+		CB03CCD316108EB800BBC7D1 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = CB03CCD216108EB800BBC7D1 /* Base64.m */; };
 		CB22B4511606A2990069D346 /* kiandra@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB22B44F1606A2990069D346 /* kiandra@2x.png */; };
 		CB22B4521606A2990069D346 /* kiandra.png in Resources */ = {isa = PBXBuildFile; fileRef = CB22B4501606A2990069D346 /* kiandra.png */; };
 		CB22B95D1606B46B0069D346 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CB22B94B1606B46B0069D346 /* AFHTTPClient.m */; };
@@ -34,7 +36,7 @@
 		CB98FF7A1600756E00E75851 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB98FF791600756E00E75851 /* Default@2x.png */; };
 		CB98FF7C1600786D00E75851 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB98FF7B1600786D00E75851 /* icon.png */; };
 		CB98FF7E1600787600E75851 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB98FF7D1600787600E75851 /* icon@2x.png */; };
-		CBA099F316095C18002BAB5E /* RESTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA099F216095C18002BAB5E /* RESTClient.m */; };
+		CBA099F316095C18002BAB5E /* RESTClientAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA099F216095C18002BAB5E /* RESTClientAuthentication.m */; };
 		CBA969FE15FF1B330070F983 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA969FD15FF1B330070F983 /* UIKit.framework */; };
 		CBA96A0015FF1B330070F983 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA969FF15FF1B330070F983 /* Foundation.framework */; };
 		CBA96A0215FF1B330070F983 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA96A0115FF1B330070F983 /* CoreGraphics.framework */; };
@@ -51,6 +53,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB03CCCE161088C100BBC7D1 /* RESTClientKIntranet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTClientKIntranet.h; sourceTree = "<group>"; };
+		CB03CCCF161088C100BBC7D1 /* RESTClientKIntranet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTClientKIntranet.m; sourceTree = "<group>"; };
+		CB03CCD116108EB800BBC7D1 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		CB03CCD216108EB800BBC7D1 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		CB22B44F1606A2990069D346 /* kiandra@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kiandra@2x.png"; sourceTree = "<group>"; };
 		CB22B4501606A2990069D346 /* kiandra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kiandra.png; sourceTree = "<group>"; };
 		CB22B94A1606B46B0069D346 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -90,8 +96,8 @@
 		CB98FF791600756E00E75851 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		CB98FF7B1600786D00E75851 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CB98FF7D1600787600E75851 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		CBA099F116095C18002BAB5E /* RESTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTClient.h; sourceTree = "<group>"; };
-		CBA099F216095C18002BAB5E /* RESTClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTClient.m; sourceTree = "<group>"; };
+		CBA099F116095C18002BAB5E /* RESTClientAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTClientAuthentication.h; sourceTree = "<group>"; };
+		CBA099F216095C18002BAB5E /* RESTClientAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTClientAuthentication.m; sourceTree = "<group>"; };
 		CBA969F915FF1B330070F983 /* kIntranet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kIntranet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA969FD15FF1B330070F983 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CBA969FF15FF1B330070F983 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -232,8 +238,12 @@
 				CBC70CE21605DC0B006F7434 /* KeychainItemWrapper.m */,
 				CBC70CEA1605F7B1006F7434 /* MyViewController.h */,
 				CBC70CEB1605F7B1006F7434 /* MyViewController.m */,
-				CBA099F116095C18002BAB5E /* RESTClient.h */,
-				CBA099F216095C18002BAB5E /* RESTClient.m */,
+				CBA099F116095C18002BAB5E /* RESTClientAuthentication.h */,
+				CBA099F216095C18002BAB5E /* RESTClientAuthentication.m */,
+				CB03CCCE161088C100BBC7D1 /* RESTClientKIntranet.h */,
+				CB03CCCF161088C100BBC7D1 /* RESTClientKIntranet.m */,
+				CB03CCD116108EB800BBC7D1 /* Base64.h */,
+				CB03CCD216108EB800BBC7D1 /* Base64.m */,
 			);
 			path = kIntranet;
 			sourceTree = "<group>";
@@ -346,7 +356,9 @@
 				CB22B9631606B46B0069D346 /* AFURLConnectionOperation.m in Sources */,
 				CB22B9641606B46B0069D346 /* AFXMLRequestOperation.m in Sources */,
 				CB22B9651606B46B0069D346 /* UIImageView+AFNetworking.m in Sources */,
-				CBA099F316095C18002BAB5E /* RESTClient.m in Sources */,
+				CBA099F316095C18002BAB5E /* RESTClientAuthentication.m in Sources */,
+				CB03CCD0161088C100BBC7D1 /* RESTClientKIntranet.m in Sources */,
+				CB03CCD316108EB800BBC7D1 /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

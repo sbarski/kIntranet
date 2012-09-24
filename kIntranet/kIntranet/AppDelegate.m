@@ -1,4 +1,4 @@
-//
+		//
 //  AppDelegate.m
 //  kIntranet
 //
@@ -14,6 +14,7 @@
 }
 
 @synthesize isAuthenticated;
+@synthesize loginViewController;
 
 - (void)dealloc
 {
@@ -72,23 +73,18 @@
 }
 
 
-
 -(BOOL)manualUserLogin:(LoginViewController *)controller username:(NSString *)username password:(NSString *)password
 {
-    //if ([self authenticateUser:username password:password])
-    //{
-        KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc]initWithIdentifier:@"kIntranet Login" accessGroup:nil];
-        
-        [keychainItem setObject:username forKey:kSecAttrAccount];
-        
-        [keychainItem setObject:password forKey:kSecValueData];
-        
-        self.isAuthenticated = true;
-        
-        return true;
-    //}
+    RESTClient *restClient = [[RESTClient alloc]init];
+    restClient.delegate = self;
     
-    //return false;
+    self.loginViewController = controller;
+    
+    [restClient authenticateUserBy:username andPassword:password];
+    
+    //[restClient release];
+    
+    return true;
 }
 
 -(BOOL)loginToIntranet
@@ -104,19 +100,24 @@
 
     [keychainItem release];
     
-    RESTClient *restClient = [[RESTClient alloc]init];
-    restClient.delegate = self;
-
-    [restClient authenticateUserBy:token];
-    
-    [restClient release];
+    self.isAuthenticated = true;
     
     return YES;
 }
 
 -(void)authenticateUser:(BOOL)success and:(NSString*)token
 {
-    
+    if (success == TRUE)
+    {
+        KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc]initWithIdentifier:@"kIntranet Login" accessGroup:nil];
+        
+        //store token
+        [keychainItem setObject:token forKey:kSecValueData];
+        
+        self.isAuthenticated = true;
+    }
+
+    [loginViewController userAuthenticationCompleted:success];
 }
 
 -(BOOL)logoutUser

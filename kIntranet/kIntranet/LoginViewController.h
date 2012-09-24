@@ -17,6 +17,10 @@
 -(BOOL)logoutUser;
 @end
 
+@protocol LoginViewControllerOnSuccessDelegate <NSObject>
+-(BOOL)refreshStaffList;
+@end
+
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 {
     IBOutlet UITextField *usernameField;
@@ -30,10 +34,13 @@
 @property (nonatomic, retain) UIButton *loginButton;
 @property (nonatomic, retain) UIActivityIndicatorView *loginIndicator;
 
+
 @property (nonatomic, strong) id <LoginViewControllerDelegate> delegate;
 
 -(IBAction)viewTouchUpInside:(id)sender;
 
--(IBAction) login: (id) sender;
+-(IBAction)login: (id) sender;
+
+-(IBAction)userAuthenticationCompleted: (BOOL)success;
 
 @end

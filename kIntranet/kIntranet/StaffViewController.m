@@ -40,6 +40,11 @@
    
 }
 
+-(void)updateStaffList:(NSDictionary *)list
+{
+    
+}
+
 -(void)handleLogin
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];

@@ -18,8 +18,6 @@
 
 @property (nonatomic, strong) id<RESTClientDelegate> delegate;
 
--(void)authenticateUserBy:(NSString*)token;
-
 -(void)authenticateUserBy:(NSString*)username andPassword:(NSString*)password;
 
 @end
