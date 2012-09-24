@@ -45,6 +45,13 @@
     
 }
 
+-(void)refreshStaffList
+{
+    RESTClientKIntranet *client = [[[RESTClientKIntranet alloc]init]autorelease];
+    
+    [client refreshStaffList];
+}
+
 -(void)handleLogin
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];

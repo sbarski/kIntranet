@@ -24,4 +24,6 @@
 
 - (IBAction)checkInStaff:(id)sender;
 
+-(void)refreshStaffList;
+
 @end

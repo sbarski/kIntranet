@@ -115,6 +115,11 @@
         [keychainItem setObject:token forKey:kSecValueData];
         
         self.isAuthenticated = true;
+        
+        UITabBarController *tabBarController = (UITabBarController *) self.window.rootViewController;
+        UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
+        StaffViewController *staffViewController = [[navigationController viewControllers] objectAtIndex:0];
+        [staffViewController refreshStaffList];
     }
 
     [loginViewController userAuthenticationCompleted:success];

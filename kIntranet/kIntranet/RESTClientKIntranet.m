@@ -19,11 +19,12 @@
    
     NSMutableURLRequest *request = [[[NSMutableURLRequest alloc]init]autorelease];
     
+    NSString *authorization = [Base64 encodeBase64WithString:token];
    
     [request setURL:[NSURL URLWithString:@"https://transit.local/api/intranet/staff"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[Base64 encodeBase64WithString:token] forHTTPHeaderField:@"Authorization"];
+    [request setValue:authorization forHTTPHeaderField:@"Authorization"];
     
     NSError *error;
     NSURLResponse *response;

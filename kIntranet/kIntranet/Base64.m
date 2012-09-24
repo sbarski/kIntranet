@@ -10,7 +10,10 @@
 @implementation Base64
 
 + (NSString *)encodeBase64WithString:(NSString *)strData{
-    NSString *string = [[[NSString alloc]initWithData:[Base64 base64DataFromString:strData] encoding:NSUTF8StringEncoding]autorelease];
+    NSData *data = [Base64 base64DataFromString:strData];
+    NSLog(@"%@",data);
+    NSString *string = [[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]autorelease];
+    NSLog(@"%@",string);
     return string;
 }
 
