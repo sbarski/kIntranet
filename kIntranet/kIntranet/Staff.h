@@ -10,11 +10,13 @@
 
 @interface Staff : NSObject
 
+@property (nonatomic, copy) NSString *identification;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *location;
 @property (nonatomic, copy) NSDate *checkout;
 @property (nonatomic, copy) NSDate *checkin;
 @property (nonatomic, assign) BOOL selected;
+@property (nonatomic, assign) BOOL modified;
 
 -(BOOL)isSelected;
 

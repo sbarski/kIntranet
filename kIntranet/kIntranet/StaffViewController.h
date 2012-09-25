@@ -14,7 +14,7 @@
 
 #import "RESTClientKIntranet.h"
 
-@interface StaffViewController : UITableViewController<CheckoutViewControllerDelegate>
+@interface StaffViewController : UITableViewController<CheckoutViewControllerDelegate, RESTClientDelegate>
 
 @property (nonatomic, strong) NSMutableArray *employees; //mutable array property
 @property (nonatomic, strong) NSArray *selectedCells;

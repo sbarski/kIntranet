@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Staff.h"
 #import "KeychainItemWrapper.h"
 #import "Base64.h"
 
@@ -15,6 +16,7 @@
 
 @protocol RESTClientDelegate <NSObject>
 -(void)updateStaffList:(NSDictionary *)list;
+-(void)userSignOut;
 @end
 
 @interface RESTClientKIntranet : NSObject<NSURLConnectionDelegate>

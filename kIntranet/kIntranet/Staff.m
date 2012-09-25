@@ -15,6 +15,8 @@
 @synthesize checkin;
 @synthesize checkout;
 @synthesize selected;
+@synthesize identification;
+@synthesize modified;
 
 -(BOOL)isSelected
 {

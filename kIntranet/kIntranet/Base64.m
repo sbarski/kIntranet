@@ -9,82 +9,77 @@
 #import "Base64.h"
 @implementation Base64
 
-+ (NSString *)encodeBase64WithString:(NSString *)strData{
-    NSData *data = [Base64 base64DataFromString:strData];
++(NSString *)Base64EncodeForString:(NSString *)strData{
+    NSData *data = [strData dataUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"%@",data);
-    NSString *string = [[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]autorelease];
-    NSLog(@"%@",string);
-    return string;
+    
+    return [Base64 Base64EncodeForData:data];
 }
 
-+ (NSData *) base64DataFromString: (NSString *)string {
-    unsigned long ixtext, lentext;
-    unsigned char ch, input[4], output[3];
-    short i, ixinput;
-    Boolean flignore, flendtext = false;
-    const char *temporary;
-    NSMutableData *result;
++(NSString *)Base64EncodeForData:(NSData *)data{
+    //Point to start of the data and set buffer sizes
+    int inLength = [data length];
+    int outLength = ((((inLength * 4)/3)/4)*4) + (((inLength * 4)/3)%4 ? 4 : 0);
+    const char *inputBuffer = [data bytes];
+    char *outputBuffer = malloc(outLength);
+    outputBuffer[outLength] = 0;
     
-    if (!string)
-        return [NSData data];
+    //64 digit code
+    static char Encode[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     
-    ixtext = 0;
-    temporary = [string UTF8String];
-    lentext = [string length];
-    result = [NSMutableData dataWithCapacity: lentext];
-    ixinput = 0;
+    //start the count
+    int cycle = 0;
+    int inpos = 0;
+    int outpos = 0;
+    char temp;
     
-    while (true) {
-        if (ixtext >= lentext)
-            break;
-        ch = temporary[ixtext++];
-        flignore = false;
-        
-        if ((ch >= 'A') && (ch <= 'Z'))
-            ch = ch - 'A';
-        else if ((ch >= 'a') && (ch <= 'z'))
-            ch = ch - 'a' + 26;
-        else if ((ch >= '0') && (ch <= '9'))
-            ch = ch - '0' + 52;
-        else if (ch == '+')
-            ch = 62;
-        else if (ch == '=')
-            flendtext = true;
-        else if (ch == '/')
-            ch = 63;
-        else
-            flignore = true;
-        
-        if (!flignore) {
-            short ctcharsinput = 3;
-            Boolean flbreak = false;
-            
-            if (flendtext) {
-                if (ixinput == 0)
-                    break;
-                if ((ixinput == 1) || (ixinput == 2))
-                    ctcharsinput = 1;
-                else
-                    ctcharsinput = 2;
-                ixinput = 3;
-                flbreak = true;
-            }
-            
-            input[ixinput++] = ch;
-            
-            if (ixinput == 4){
-                ixinput = 0;
-                output[0] = (input[0] << 2) | ((input[1] & 0x30) >> 4);
-                output[1] = ((input[1] & 0x0F) << 4) | ((input[2] & 0x3C) >> 2);
-                output[2] = ((input[2] & 0x03) << 6) | (input[3] & 0x3F);
-                for (i = 0; i < ctcharsinput; i++)
-                    [result appendBytes: &output[i] length: 1];
-            }
-            if (flbreak)
+    //Pad the last to bytes, the outbuffer must always be a multiple of 4
+    outputBuffer[outLength-1] = '=';
+    outputBuffer[outLength-2] = '=';
+    
+    /* http://en.wikipedia.org/wiki/Base64
+     Text content   M           a           n
+     ASCII          77          97          110
+     8 Bit pattern  01001101    01100001    01101110
+     
+     6 Bit pattern  010011  010110  000101  101110
+     Index          19      22      5       46
+     Base64-encoded T       W       F       u
+     */
+    
+    
+    while (inpos < inLength){
+        switch (cycle) {
+            case 0:
+                outputBuffer[outpos++] = Encode[(inputBuffer[inpos]&0xFC)>>2];
+                cycle = 1;
+                break;
+            case 1:
+                temp = (inputBuffer[inpos++]&0x03)<<4;
+                outputBuffer[outpos] = Encode[temp];
+                cycle = 2;
+                break;
+            case 2:
+                outputBuffer[outpos++] = Encode[temp|(inputBuffer[inpos]&0xF0)>> 4];
+                temp = (inputBuffer[inpos++]&0x0F)<<2;
+                outputBuffer[outpos] = Encode[temp];
+                cycle = 3;
+                break;
+            case 3:
+                outputBuffer[outpos++] = Encode[temp|(inputBuffer[inpos]&0xC0)>>6];
+                cycle = 4;
+                break;
+            case 4:
+                outputBuffer[outpos++] = Encode[inputBuffer[inpos++]&0x3f];
+                cycle = 0;
+                break;                          
+            default:
+                cycle = 0;
                 break;
         }
     }
-    return result;
+    NSString *pictemp = [NSString stringWithUTF8String:outputBuffer];
+    free(outputBuffer); 
+    return pictemp;
 }
-
 @end

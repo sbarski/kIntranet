@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 @interface Base64 : NSObject
-+ (NSString *)encodeBase64WithString:(NSString *)strData;
-+ (NSData *) base64DataFromString: (NSString *)string;
++(NSString *)Base64EncodeForString:(NSString *)strData;
++(NSString *)Base64EncodeForData:(NSData *)data;
 @end

@@ -26,25 +26,7 @@
 {
     // Override point for customization after application launch.
     employees = [NSMutableArray arrayWithCapacity:100];
-    
-    self.isAuthenticated = false;
-    
-    Staff *staff = [[Staff alloc] init];
-    staff.name = @"Peter Sbarski";
-    staff.location = @"Melbourne Office";
-    staff.checkin = nil;
-    staff.checkout = nil;
-    
-    [employees addObject:staff];
-    
-    staff = [[Staff alloc] init];
-    staff.name = @"Sam Kroonenburg";
-    staff.location = @"TechEd";
-    staff.checkout = [self getCurrentDate:0];
-    staff.checkin = [self getCurrentDate:10];
-    
-    [employees addObject:staff];
-    
+
     UITabBarController *tabBarController = (UITabBarController *) self.window.rootViewController;
     
     UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
@@ -81,8 +63,6 @@
     self.loginViewController = controller;
     
     [restClient authenticateUserBy:username andPassword:password];
-    
-    //[restClient release];
     
     return true;
 }

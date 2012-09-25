@@ -266,6 +266,7 @@
         staff.checkout = self.checkout;
         staff.location = self.location;
         staff.selected = FALSE;
+        staff.modified = TRUE;
     }
     
     [self.delegate checkoutViewControllerDidSave:self];
