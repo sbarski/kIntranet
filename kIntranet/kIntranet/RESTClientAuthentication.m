@@ -91,6 +91,11 @@
 
 -(void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
+    NSLog(@"Could not login");
+    
+    [connection cancel];
+    
+    [self.delegate authenticateUser:false and:@""];
     // Handle the error properly
 }
 

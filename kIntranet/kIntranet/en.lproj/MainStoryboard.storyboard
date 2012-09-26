@@ -261,8 +261,8 @@
                                     <action selector="login:" destination="yI4-2K-L3T" eventType="touchUpInside" id="SJZ-Fo-nvR"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" style="gray" id="Rdn-Kw-IO2">
-                                <rect key="frame" x="150" y="422" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" style="whiteLarge" id="Rdn-Kw-IO2">
+                                <rect key="frame" x="142" y="263" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="kiandra.png" id="YUC-FB-uqM">
@@ -429,6 +429,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
                 <relationship kind="action" name="login:"/>
+                <relationship kind="action" name="userAuthenticationCompleted:"/>
                 <relationship kind="action" name="viewTouchUpInside:"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginIndicator" candidateClass="UIActivityIndicatorView"/>

@@ -162,6 +162,8 @@
     
     self.passwordField.text = @"";
     
+    [usernameField setUserInteractionEnabled:YES];
+    [passwordField setUserInteractionEnabled:YES];
     
     if (success)
     {
@@ -191,6 +193,9 @@
         self.loginButton.enabled = FALSE;
         
         [self.delegate manualUserLogin:self username:self.usernameField.text password:self.passwordField.text];
+        
+        [usernameField setUserInteractionEnabled:NO];
+        [passwordField setUserInteractionEnabled:NO];
     }
     else
     {

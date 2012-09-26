@@ -27,9 +27,6 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
     
-    NSError *error;
-    NSURLResponse *response;
-    
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [conn start];
     
@@ -38,7 +35,11 @@
 
 -(void)updateStaffLocation:(NSMutableArray *)employees
 {
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    //NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    NSMutableArray *modifiedStaffArray = [[NSMutableArray alloc]init];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"];
     
     for(id staff in employees)
     {
@@ -47,24 +48,45 @@
             NSMutableDictionary *member = [[NSMutableDictionary alloc]init];
             
             [member setObject:((Staff*)staff).identification forKey:@"Id"];
-            [member setObject:((Staff*)staff).checkin forKey:@"In"];
-            [member setObject:((Staff*)staff).checkout forKey:@"Out"];
+            
+            if (((Staff*)staff).checkin == nil)
+            {
+                [member setObject:[NSNull null] forKey:@"In"];
+            }
+            else
+            {
+                [member setObject:[dateFormat stringFromDate:((Staff*)staff).checkin] forKey:@"In"];
+            }
+            
+            if (((Staff*)staff).checkout == nil)
+            {
+                [member setObject:[NSNull null] forKey:@"Out"];
+            }
+            else
+            {
+                [member setObject:[dateFormat stringFromDate:((Staff*)staff).checkout] forKey:@"Out"];
+            }
+
             [member setObject:((Staff*)staff).location forKey:@"Location"];
             
             ((Staff*)staff).modified = NO;
             
-            [dict addEntriesFromDictionary:member];
+            [modifiedStaffArray addObject:member];
+            //[e addEntriesFromDictionary:member];
             
             [member release];
         }
     }
     
-    [self updateIntranet:dict];
+    [dateFormat release];
+    
+    [self updateIntranet:modifiedStaffArray];
 
-    [dict release];
+    [modifiedStaffArray release];
+    //[dict release];
 }
 
--(void)updateIntranet:(NSDictionary*)dict
+-(void)updateIntranet:(NSMutableArray*)staff
 {
     KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc]initWithIdentifier:@"kIntranet Login" accessGroup:nil];
     NSString *token = [keychainItem objectForKey:kSecValueData];
@@ -74,21 +96,25 @@
     NSString *authorization = [Base64 Base64EncodeForString:token];
     NSString *authHeader = [@"Basic " stringByAppendingFormat:@"%@", authorization];
     
-    NSString *jsonRequest = [dict JSONRepresentation]; //wrong
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:staff options:NSJSONWritingPrettyPrinted error:&error];
     
-    NSData *postData = [jsonRequest dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    if (!jsonData)
+    {
+        NSLog(@"Got an error: %@", error);
+        return;
+    }
+    
+    //NSString *jsonString = [[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding]autorelease];
     
     [request setURL:[NSURL URLWithString:@"https://transit.local/api/intranet/SetStaffLocation"]];
     [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
-    [request setHTTPBody:postData];
-    
-    NSError *error;
-    NSURLResponse *response;
+    [request setHTTPBody:jsonData];
     
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+
     [conn start];
     
     [conn release];

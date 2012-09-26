@@ -44,8 +44,7 @@
 {
     [employees removeAllObjects];
 
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"mm:hh dd/MM/yyyy"];
+    //[dateFormat setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease]];
     
     for (NSDictionary *key in list)
     {
@@ -53,9 +52,16 @@
         staff.name = [[[key objectForKey:@"Firstname"] stringByAppendingString:@" "] stringByAppendingString:[key objectForKey:@"Lastname"]];
         staff.location = [key objectForKey:@"Location"];
         
-        staff.checkin = [key objectForKey:@"In"] == [NSNull null] ? nil : [dateFormat dateFromString:[key objectForKey:@"In"]];
+        if ([key objectForKey:@"In"] == [NSNull null])
+        {
+            staff.checkin = nil;
+        }
+        else
+        {
+            staff.checkin = [StaffViewController dateFromInternetDateTimeString:[key objectForKey:@"In"]];
+        }
         
-        staff.checkout = [key objectForKey:@"Out"] == [NSNull null] ? nil : [dateFormat dateFromString:[key objectForKey:@"Out"]];
+        staff.checkout = [key objectForKey:@"Out"] == [NSNull null] ? nil : [StaffViewController dateFromInternetDateTimeString:[key objectForKey:@"Out"]];
         
         staff.identification = [key objectForKey:@"Id"];
         
@@ -196,6 +202,12 @@
         staff.modified = YES;
     }
     
+    RESTClientKIntranet *client = [[[RESTClientKIntranet alloc]init]autorelease];
+    
+    client.delegate = self;
+    
+    [client updateStaffLocation:employees];
+    
     self.navigationItem.rightBarButtonItem.enabled = FALSE;
     self.navigationItem.leftBarButtonItem.enabled = FALSE;
     
@@ -282,12 +294,101 @@
 
 -(void)checkoutViewControllerDidSave:(CheckoutViewController *)controller
 {
+    RESTClientKIntranet *client = [[[RESTClientKIntranet alloc]init]autorelease];
+    
+    client.delegate = self;
+    
+    [client updateStaffLocation:employees];
+    
     [self.tableView reloadData];
     
     self.navigationItem.rightBarButtonItem.enabled = FALSE;
     self.navigationItem.leftBarButtonItem.enabled = FALSE;
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
++ (NSDate *)dateFromInternetDateTimeString:(NSString *)dateString {
+    
+    // Setup Date & Formatter
+    NSDate *date = nil;
+    static NSDateFormatter *formatter = nil;
+    if (!formatter) {
+        NSLocale *en_US_POSIX = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setLocale:en_US_POSIX];
+        [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        [en_US_POSIX release];
+    }
+    
+    /*
+     *  RFC3339
+     */
+    
+    NSString *RFC3339String = [[NSString stringWithString:dateString] uppercaseString];
+    RFC3339String = [RFC3339String stringByReplacingOccurrencesOfString:@"Z" withString:@"-0000"];
+    
+    // Remove colon in timezone as iOS 4+ NSDateFormatter breaks
+    // See https://devforums.apple.com/thread/45837
+    if (RFC3339String.length > 20) {
+        RFC3339String = [RFC3339String stringByReplacingOccurrencesOfString:@":"
+                                                                 withString:@""
+                                                                    options:0
+                                                                      range:NSMakeRange(20, RFC3339String.length-20)];
+    }
+    
+    if (!date) { // 1996-12-19T16:39:57-0800
+        [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"];
+        date = [formatter dateFromString:RFC3339String];
+    }
+    if (!date) { // 1937-01-01T12:00:27.87+0020
+        [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZ"];
+        date = [formatter dateFromString:RFC3339String];
+    }
+    if (!date) { // 1937-01-01T12:00:27
+        [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
+        date = [formatter dateFromString:RFC3339String];
+    }
+    if (date) return date;
+    
+    /*
+     *  RFC822
+     */
+    
+    NSString *RFC822String = [[NSString stringWithString:dateString] uppercaseString];
+    if (!date) { // Sun, 19 May 02 15:21:36 GMT
+        [formatter setDateFormat:@"EEE, d MMM yy HH:mm:ss zzz"];
+        date = [formatter dateFromString:RFC822String];
+    }
+    if (!date) { // Sun, 19 May 2002 15:21:36 GMT
+        [formatter setDateFormat:@"EEE, d MMM yyyy HH:mm:ss zzz"];
+        date = [formatter dateFromString:RFC822String];
+    }
+    if (!date) {  // Sun, 19 May 2002 15:21 GMT
+        [formatter setDateFormat:@"EEE, d MMM yyyy HH:mm zzz"];
+        date = [formatter dateFromString:RFC822String];
+    }
+    if (!date) {  // 19 May 2002 15:21:36 GMT
+        [formatter setDateFormat:@"d MMM yyyy HH:mm:ss zzz"];
+        date = [formatter dateFromString:RFC822String];
+    }
+    if (!date) {  // 19 May 2002 15:21 GMT
+        [formatter setDateFormat:@"d MMM yyyy HH:mm zzz"];
+        date = [formatter dateFromString:RFC822String];
+    }
+    if (!date) {  // 19 May 2002 15:21:36
+        [formatter setDateFormat:@"d MMM yyyy HH:mm:ss"];
+        date = [formatter dateFromString:RFC822String];
+    }
+    if (!date) {  // 19 May 2002 15:21
+        [formatter setDateFormat:@"d MMM yyyy HH:mm"];
+        date = [formatter dateFromString:RFC822String];
+    }
+    if (date) return date;
+    
+    // Failed
+    return nil;
+    
 }
 
 - (void)dealloc {
