@@ -22,7 +22,7 @@
     NSString *authorization = [Base64 Base64EncodeForString:token];
     NSString *authHeader = [@"Basic " stringByAppendingFormat:@"%@", authorization];
    
-    [request setURL:[NSURL URLWithString:@"https://transit.local/api/intranet/staff"]];
+    [request setURL:[NSURL URLWithString:@"https://kintranet.apphb.com/api/intranet/staff"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
@@ -107,7 +107,7 @@
     
     //NSString *jsonString = [[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding]autorelease];
     
-    [request setURL:[NSURL URLWithString:@"https://transit.local/api/intranet/SetStaffLocation"]];
+    [request setURL:[NSURL URLWithString:@"https://kintranet.apphb.com/api/intranet/SetStaffLocation"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
@@ -126,7 +126,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    NSArray *trustedHosts = [NSArray arrayWithObjects:@"transit.local",nil];
+    NSArray *trustedHosts = [NSArray arrayWithObjects:@"kintranet.apphb.com",nil];
     
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]){
         if ([trustedHosts containsObject:challenge.protectionSpace.host]) {

@@ -22,7 +22,7 @@
     
     NSMutableURLRequest *request = [[[NSMutableURLRequest alloc]init]autorelease];
     
-    [request setURL:[NSURL URLWithString:@"https://transit.local/api/account/logon"]];
+    [request setURL:[NSURL URLWithString:@"https://kintranet.apphb.com/api/account/logon"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -42,7 +42,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    NSArray *trustedHosts = [NSArray arrayWithObjects:@"transit.local",nil];
+    NSArray *trustedHosts = [NSArray arrayWithObjects:@"kintranet.apphb.com",nil];
     
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]){
         if ([trustedHosts containsObject:challenge.protectionSpace.host]) {

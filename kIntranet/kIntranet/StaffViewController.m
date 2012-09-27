@@ -151,6 +151,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StaffCell"];
+    
     Staff *staff = [self.employees objectAtIndex:indexPath.row];
     cell.textLabel.text = staff.name;
     cell.detailTextLabel.text = staff.location;
@@ -182,6 +183,10 @@
     if (staff.selected == FALSE)
     {
         cell.imageView.hidden = TRUE;
+    }
+    else
+    {
+        cell.imageView.hidden = FALSE;
     }
     
     return cell;
