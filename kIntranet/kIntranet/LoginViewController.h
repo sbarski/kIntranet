@@ -43,4 +43,6 @@
 
 -(IBAction)userAuthenticationCompleted: (BOOL)success;
 
+-(IBAction)refresh:(id)sender;
+
 @end

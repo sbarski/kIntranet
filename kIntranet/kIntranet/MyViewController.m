@@ -25,6 +25,8 @@
 
 - (void)viewDidLoad
 {
+    
+    
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -46,6 +48,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(indexPath.section == 0){
+        
+        cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+        
+    }
+}
 #pragma mark - Table view data source
 /*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -62,13 +72,15 @@
     return 0;
 }
 
+*/
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.backgroundColor = [UIColor clearColor];
     
-    // Configure the cell...
     
     return cell;
 }
@@ -117,7 +129,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1 && indexPath.row == 0)
+    if (indexPath.section == 1)
     {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
         

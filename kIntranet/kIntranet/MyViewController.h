@@ -11,6 +11,10 @@
 
 @class MyViewController;
 
+@interface OptionSwitchCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UISwitch* switchControl;
+@end
+
 @interface MyViewController : UITableViewController<LoginViewControllerDelegate>
 
 @end

@@ -27,6 +27,9 @@
 @synthesize delegate;
 @synthesize locationTextField;
 
+@synthesize map;
+@synthesize geocoder;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -50,6 +53,29 @@
     self.location = [self.locations objectAtIndex:0];
     self.checkout = [NSDate date];
     self.checkin = [[NSDate date] dateByAddingTimeInterval:3600];
+    
+    self.map.delegate = self;
+    
+    if (!self.geocoder)
+        self.geocoder = [[CLGeocoder alloc]init];
+    
+    [self setUserLocation];
+}
+
+-(void)setUserLocation
+{
+    map.zoomEnabled = TRUE;
+    map.showsUserLocation = TRUE;
+    
+    MKCoordinateRegion newRegion;
+    MKUserLocation* usrLocation = map.userLocation;
+    
+    newRegion.center.latitude = -37.8130;// usrLocation.location.coordinate.latitude;
+    newRegion.center.longitude = 144.9559;//usrLocation.location.coordinate.longitude;
+
+    newRegion.span.latitudeDelta = 20.0;
+    newRegion.span.longitudeDelta = 28.0;
+    [self.map setRegion:newRegion animated:YES];
 }
 
 - (void)viewDidUnload
@@ -71,6 +97,51 @@
 
 #pragma mark - Table view delegate
 
+-(void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    [self.map setCenterCoordinate: userLocation.location.coordinate animated: YES];
+  
+    [self.geocoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray* placemarks, NSError* error){
+        
+        if ([placemarks count] > 0)
+        {
+            [self.locations removeAllObjects];
+            
+            [self.locations addObject:@"Cafe"];
+            [self.locations addObject:@"Client"];
+            [self.locations addObject:@"Boardroom"];
+            [self.locations addObject:@"Other"];
+            
+            for (int i = 0; i < [placemarks count]; i++)
+            {
+                CLPlacemark *placemark = [placemarks objectAtIndex:i];
+                
+                [self.locations addObject:placemark.name];
+            }
+        }
+    }];
+}
+
+- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views {
+    for(MKAnnotationView *annotationView in views) {
+        if(annotationView.annotation == mv.userLocation) {
+            MKCoordinateRegion region;
+            MKCoordinateSpan span;
+            
+            span.latitudeDelta=0.1;
+            span.longitudeDelta=0.1;
+            
+            CLLocationCoordinate2D location=mv.userLocation.coordinate;
+            
+            region.span=span;
+            region.center=location;
+            
+            [mv setRegion:region animated:TRUE];
+            [mv regionThatFits:region];
+        }
+    }
+}
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,7 +160,7 @@
        		[self.locationTextField becomeFirstResponder];
         }
     }
-    else if (indexPath.section > 0)
+    else if (indexPath.section == 1 || indexPath.section == 2)
     {
         [self showDatePicker:indexPath.section];
     }
@@ -276,6 +347,8 @@
     [locationTextField release];
     [locations release];
     [temporaryLocation release];
+    [map release];
+    [geocoder release];
     [super dealloc];
 }
 @end

@@ -28,7 +28,7 @@
         // Custom initialization
     }
     return self;
-}
+}	
 
 - (void)viewDidLoad
 {
@@ -36,8 +36,14 @@
      
     [self tableView].allowsMultipleSelection = TRUE;
     
+    [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+    
     [self performSelector:@selector(handleLogin) withObject:nil afterDelay:0];
-   
+}
+
+-(void)handleRefresh:(id)target
+{
+    [self refreshStaffList];   
 }
 
 -(void)updateStaffList:(NSDictionary *)list
@@ -69,6 +75,8 @@
     }
     
     [self.tableView reloadData];
+    
+    [self.refreshControl endRefreshing];
 }
 
 -(void)userSignOut
@@ -93,6 +101,7 @@
     
     [client refreshStaffList];
 }
+
 
 -(void)handleLogin
 {
@@ -220,6 +229,9 @@
 }
 
 #pragma mark - Table view delegate
+- (IBAction)refreshStaff:(id)sender {
+    [self refreshStaffList];
+}
 
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -234,6 +246,7 @@
         self.navigationItem.leftBarButtonItem.enabled = FALSE;
     }
 }
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -250,7 +263,6 @@
         self.navigationItem.leftBarButtonItem.enabled = TRUE;
     }
 }
-
 
 -(BOOL)loginToKIntranet:(LoginViewController *)controller currentUserid:(NSString *)authenticatedUserId currentFirstName:(NSString *)authenticatedFirstName currentLastName:(NSString *)authenticatedLastName
 {

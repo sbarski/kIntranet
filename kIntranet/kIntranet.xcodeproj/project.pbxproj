@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CB03CCD0161088C100BBC7D1 /* RESTClientKIntranet.m in Sources */ = {isa = PBXBuildFile; fileRef = CB03CCCF161088C100BBC7D1 /* RESTClientKIntranet.m */; };
 		CB03CCD316108EB800BBC7D1 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = CB03CCD216108EB800BBC7D1 /* Base64.m */; };
+		CB03CCDE1614871000BBC7D1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB03CCDD1614871000BBC7D1 /* MapKit.framework */; };
+		CB03CCE01614947400BBC7D1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB03CCDF1614947400BBC7D1 /* CoreLocation.framework */; };
 		CB22B4511606A2990069D346 /* kiandra@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB22B44F1606A2990069D346 /* kiandra@2x.png */; };
 		CB22B4521606A2990069D346 /* kiandra.png in Resources */ = {isa = PBXBuildFile; fileRef = CB22B4501606A2990069D346 /* kiandra.png */; };
 		CB911A7D15FF63B5003ECD79 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = CB911A7915FF63B5003ECD79 /* home.png */; };
@@ -48,6 +50,8 @@
 		CB03CCCF161088C100BBC7D1 /* RESTClientKIntranet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTClientKIntranet.m; sourceTree = "<group>"; };
 		CB03CCD116108EB800BBC7D1 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		CB03CCD216108EB800BBC7D1 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		CB03CCDD1614871000BBC7D1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CB03CCDF1614947400BBC7D1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CB22B44F1606A2990069D346 /* kiandra@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kiandra@2x.png"; sourceTree = "<group>"; };
 		CB22B4501606A2990069D346 /* kiandra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kiandra.png; sourceTree = "<group>"; };
 		CB911A7915FF63B5003ECD79 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB03CCE01614947400BBC7D1 /* CoreLocation.framework in Frameworks */,
+				CB03CCDE1614871000BBC7D1 /* MapKit.framework in Frameworks */,
 				CBC70CE01605DA77006F7434 /* Security.framework in Frameworks */,
 				CBA969FE15FF1B330070F983 /* UIKit.framework in Frameworks */,
 				CBA96A0015FF1B330070F983 /* Foundation.framework in Frameworks */,
@@ -132,6 +138,8 @@
 		CBA969EE15FF1B330070F983 = {
 			isa = PBXGroup;
 			children = (
+				CB03CCDF1614947400BBC7D1 /* CoreLocation.framework */,
+				CB03CCDD1614871000BBC7D1 /* MapKit.framework */,
 				CB98FF7D1600787600E75851 /* icon@2x.png */,
 				CB98FF7B1600786D00E75851 /* icon.png */,
 				CB98FF791600756E00E75851 /* Default@2x.png */,
@@ -379,6 +387,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kIntranet/kIntranet-Prefix.pch";
 				INFOPLIST_FILE = "kIntranet/kIntranet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -399,6 +408,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kIntranet/kIntranet-Prefix.pch";
 				INFOPLIST_FILE = "kIntranet/kIntranet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "Staff.h"
 
 @class CheckoutViewController;
@@ -17,7 +19,7 @@
 -(NSArray*)selectedStaff : (CheckoutViewController *)controller;
 @end
 
-@interface CheckoutViewController : UITableViewController<UIActionSheetDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+@interface CheckoutViewController : UITableViewController<UIActionSheetDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, MKMapViewDelegate>
 
 @property (nonatomic, copy) NSString *location;
 @property (nonatomic, copy) NSString *temporaryLocation;
@@ -33,8 +35,11 @@
 
 @property (retain, nonatomic) IBOutlet UITextField *locationTextField;
 
+@property (nonatomic, strong) CLGeocoder *geocoder;
+
 - (IBAction)cancel: (id)sender;
 - (IBAction)done: (id)sender;
 
+@property (retain, nonatomic) IBOutlet MKMapView *map;
 
 @end

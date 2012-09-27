@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIKit/UIControl.h>
 #import "AppDelegate.h"
 #import "Staff.h"
 #import "CheckoutViewController.h"
@@ -22,7 +23,7 @@
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *userid;
 
-- (IBAction)checkInStaff:(id)sender;
+-(IBAction)checkInStaff:(id)sender;
 
 -(void)refreshStaffList;
 
