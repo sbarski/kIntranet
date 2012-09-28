@@ -187,7 +187,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Check-in time" id="2K0-MO-Dlh">
+                            <tableViewSection headerTitle="My Map" id="2K0-MO-Dlh">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CheckoutCell" rowHeight="178" id="tEo-Ot-Fy2">
                                         <rect key="frame" x="0.0" y="366" width="320" height="180"/>

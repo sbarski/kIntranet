@@ -44,7 +44,7 @@
     [super viewDidLoad];
    
     self.locations = [[NSMutableArray alloc]init];
-    
+
     [self.locations addObject:@"Cafe"];
     [self.locations addObject:@"Client"];
     [self.locations addObject:@"Boardroom"];
@@ -70,8 +70,8 @@
     MKCoordinateRegion newRegion;
     MKUserLocation* usrLocation = map.userLocation;
     
-    newRegion.center.latitude = -37.8130;// usrLocation.location.coordinate.latitude;
-    newRegion.center.longitude = 144.9559;//usrLocation.location.coordinate.longitude;
+    newRegion.center.latitude = usrLocation.location.coordinate.latitude;
+    newRegion.center.longitude = usrLocation.location.coordinate.longitude;
 
     newRegion.span.latitudeDelta = 20.0;
     newRegion.span.longitudeDelta = 28.0;
@@ -103,22 +103,26 @@
   
     [self.geocoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray* placemarks, NSError* error){
         
+        dispatch_async(dispatch_get_main_queue(),^ {
         if ([placemarks count] > 0)
         {
-            [self.locations removeAllObjects];
+            //[self.locations removeAllObjects];
             
-            [self.locations addObject:@"Cafe"];
-            [self.locations addObject:@"Client"];
-            [self.locations addObject:@"Boardroom"];
-            [self.locations addObject:@"Other"];
-            
+            //[self.locations addObject:@"Cafe"];
+            //[self.locations addObject:@"Client"];
+            //[self.locations addObject:@"Boardroom"];
+
             for (int i = 0; i < [placemarks count]; i++)
             {
                 CLPlacemark *placemark = [placemarks objectAtIndex:i];
-                
+              
+                if ([self.locations indexOfObject:placemark.name] == NSNotFound)
                 [self.locations addObject:placemark.name];
             }
+            
+            //[self.locations addObject:@"Other"];
         }
+        });
     }];
 }
 

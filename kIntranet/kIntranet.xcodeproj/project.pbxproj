@@ -138,8 +138,6 @@
 		CBA969EE15FF1B330070F983 = {
 			isa = PBXGroup;
 			children = (
-				CB03CCDF1614947400BBC7D1 /* CoreLocation.framework */,
-				CB03CCDD1614871000BBC7D1 /* MapKit.framework */,
 				CB98FF7D1600787600E75851 /* icon@2x.png */,
 				CB98FF7B1600786D00E75851 /* icon.png */,
 				CB98FF791600756E00E75851 /* Default@2x.png */,
@@ -162,6 +160,8 @@
 		CBA969FC15FF1B330070F983 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB03CCDF1614947400BBC7D1 /* CoreLocation.framework */,
+				CB03CCDD1614871000BBC7D1 /* MapKit.framework */,
 				CBC70CDF1605DA77006F7434 /* Security.framework */,
 				CBA969FD15FF1B330070F983 /* UIKit.framework */,
 				CBA969FF15FF1B330070F983 /* Foundation.framework */,
